@@ -1,0 +1,36 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint",
+      "prettier"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "airbnb",
+      "airbnb-typescript",
+      "prettier"
+    ],
+    "rules": {
+      "@typescript-eslint/prefer-as-const": "error",
+      "no-console": "off",
+      "@typescript-eslint/explicit-function-return-type": "warn",
+      "prettier/prettier": "error",
+      "no-restricted-syntax": [
+        "error",
+        {
+          "selector": "LabeledStatement",
+          "message": "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand."
+        },
+        {
+          "selector": "WithStatement",
+          "message": "`with` is disallowed in strict mode because it makes code impossible to predict and optimize."
+        }
+      ]
+    },
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    }
+}
