@@ -29,7 +29,8 @@
           "message": "`with` is disallowed in strict mode because it makes code impossible to predict and optimize."
         }
       ],
-      "@typescript-eslint/no-inferrable-types": "off"
+      "@typescript-eslint/no-inferrable-types": "off",
+      "import/prefer-default-export": "off"
     },
     "parserOptions": {
       "project": "./tsconfig.json"
