@@ -1,6 +1,6 @@
 import { QueryFailedError } from 'typeorm';
 
-function parseDatabaseError(err: Error): DatabaseConstraintError {
+function parseDatabaseError(err: unknown): DatabaseConstraintError {
   if (!(err instanceof QueryFailedError)) {
     return { type: 'unknown', message: 'An unknown database error has occurred.' };
   }
