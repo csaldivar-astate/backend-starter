@@ -3,6 +3,10 @@ import { Session } from 'express-session';
 
 dotenv.config();
 
+if (!process.env.PORT) {
+  throw new Error('PORT must be set in .env file');
+}
+
 // Must use a function expression here so that `this` is bound to the Session object
 Session.prototype.clearSession = async function clearSession(): Promise<void> {
   // Must use an arrow function here so that it does not rebind `this`
