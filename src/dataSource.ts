@@ -1,13 +1,15 @@
 import 'reflect-metadata';
 import { DataSource, EntitySchema } from 'typeorm';
-import glob from 'glob';
-import { promisify } from 'util';
+import { glob } from 'glob';
+
+if (!process.env.DATABASE_NAME || typeof process.env.DATABASE_NAME !== 'string') {
+  throw new Error('DATABASE_NAME environment variable is required in .env file');
+}
 
 // This is a wonderfully hideous little hack to get dynamic entity module
 // loading working properly on Windows.
 async function loadEntities(): Promise<EntitySchema<unknown>[]> {
-  const globPromise = promisify(glob);
-  const globs = await globPromise('dist/entities/*.js');
+  const globs = await glob('dist/entities/*.js');
   const entityFilePaths = globs.map((entity) => entity.replace('dist/', './'));
   const entityImports = entityFilePaths.map((entityFilePath) => import(entityFilePath));
   const entityModules = await Promise.all(entityImports);
@@ -20,7 +22,7 @@ export const AppDataSource = new DataSource({
   logging: false,
   entities: await loadEntities(),
   type: 'sqlite',
-  database: process.env.DATABASE_NAME ?? 'You Forgot to set DATABASE_NAME in .env',
+  database: process.env.DATABASE_NAME,
 });
 
 await AppDataSource.initialize();

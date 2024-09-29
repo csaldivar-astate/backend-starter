@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import BrowserSync from 'browser-sync';
 import dotenv from 'dotenv';
-import chalk from 'chalk';
+import chalk from "chalk"
 
 dotenv.config();
 const { PORT } = process.env;
