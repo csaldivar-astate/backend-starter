@@ -1,16 +1,12 @@
 {
   "root": true,
+  "env": { "browser": true, "es6": true, "node": true },
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint",
-    "prettier"
-  ],
+  "plugins": ["@typescript-eslint", "prettier"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "airbnb",
-    "airbnb-typescript",
     "prettier"
   ],
   "rules": {
@@ -35,7 +31,6 @@
     "import/no-cycle": "off",
     "no-await-in-loop": "off"
   },
-  "parserOptions": {
-    "project": "./tsconfig.json"
-  }
+  "parserOptions": { "project": "./tsconfig.json" },
+  "exclude": ["*.js"]
 }
