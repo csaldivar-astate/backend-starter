@@ -1,1 +1,1 @@
-import './config'; // Load environment variables
+import 'dotenv/config'; // Load environment variables
