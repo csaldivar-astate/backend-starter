@@ -1,14 +1,116 @@
 {
-    "workbench.colorCustomizations": {
-        "editor.selectionHighlightBackground": "#7f71ff93",
-        "editor.selectionHighlightBorder": "#7f71ff93",
-        "editor.wordHighlightBackground": "#19b3be00",
-        "editor.wordHighlightBorder": "#15e7d693",
-        "activityBar.background": "#07351C",
-        "titleBar.activeBackground": "#094A27",
-        "titleBar.activeForeground": "#F1FDF7"
-    },
-    "files.exclude": {
-      "**/.gitkeep": true
-    }
+  "editor.tabSize": 2,
+  "editor.rulers": [80],
+  "editor.formatOnSave": true,
+  "files.eol": "\n",
+
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.rulers": [100],
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.rulers": [100],
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.rulers": [100],
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.rulers": [100],
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always",
+    "source.organizeImports": "always"
+  },
+
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.suggest.autoImports": false,
+  "typescript.suggest.autoImports": false,
+
+  "editor.bracketPairColorization.enabled": true,
+  "editor.suggestSelection": "recentlyUsed",
+  "diffEditor.ignoreTrimWhitespace": false,
+
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "javascript"
+  },
+  "emmet.includeLanguages": {
+    "postcss": "css"
+  },
+
+  "cSpell.enabled": true,
+  "cSpell.userWords": [
+    "apikey",
+    "argmax",
+    "argmin",
+    "astype",
+    "circumradius",
+    "classpath",
+    "dagre",
+    "dataclass",
+    "dataclasses",
+    "Downsampled",
+    "elif",
+    "esbenp",
+    "factorypath",
+    "fastmail",
+    "favorited",
+    "Fira",
+    "firestore",
+    "gzipped",
+    "headlessui",
+    "iloc",
+    "ipynb",
+    "jsonify",
+    "keras",
+    "manim",
+    "marp",
+    "Menlo",
+    "nltk",
+    "nonstopmode",
+    "OUTDIR",
+    "pandoc",
+    "pdflatex",
+    "pearsonr",
+    "pypandoc",
+    "resave",
+    "rgba",
+    "supabase",
+    "tailwindcss",
+    "todohighlight",
+    "typeorm",
+    "vsintellicode"
+  ],
+
+  "github.copilot.enable": {
+    "*": false
+  },
+
+  "workbench.colorCustomizations": {
+    "editor.selectionHighlightBackground": "#7f71ff93",
+    "editor.selectionHighlightBorder": "#7f71ff93",
+    "editor.wordHighlightBackground": "#19b3be00",
+    "editor.wordHighlightBorder": "#15e7d693",
+    "activityBar.background": "#07351C",
+    "titleBar.activeBackground": "#094A27",
+    "titleBar.activeForeground": "#F1FDF7"
+  },
+
+  "files.exclude": {
+    "**/.gitkeep": true
+  }
 }
