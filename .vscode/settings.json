@@ -93,7 +93,8 @@
     "tailwindcss",
     "todohighlight",
     "typeorm",
-    "vsintellicode"
+    "vsintellicode",
+    "bsync"
   ],
 
   "github.copilot.enable": {
@@ -112,5 +113,6 @@
 
   "files.exclude": {
     "**/.gitkeep": true
-  }
+  },
+  "chat.disableAIFeatures": true
 }
