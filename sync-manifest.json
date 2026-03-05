@@ -1,0 +1,16 @@
+{
+  "files": [
+    "scripts/sync.ts",
+    "package.json",
+    "tsconfig.json",
+    ".editorconfig",
+    ".gitattributes",
+    ".prettierrc",
+    "src/config.ts",
+    "src/dataSource.ts",
+    "src/sessionConfig.ts",
+    "src/types/utils.d.ts",
+    "src/types/express-session.d.ts",
+    "src/utils/db-utils.ts"
+  ]
+}
