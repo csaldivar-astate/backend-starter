@@ -1,5 +1,6 @@
 {
   "files": [
+    "sync-manifest.json",
     "scripts/sync.ts",
     "package.json",
     "tsconfig.json",
