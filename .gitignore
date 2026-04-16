@@ -105,3 +105,12 @@ dist
 
 .DS_Store
 *.sqlite
+
+# Frontend
+client/node_modules
+client/.svelte-kit
+frontend/build
+
+# Local tooling / notes
+.claude
+frontendGuide.md

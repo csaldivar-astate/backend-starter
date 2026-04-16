@@ -1,0 +1,9 @@
+@import '@picocss/pico/css/pico.min.css';
+
+:root {
+  --pico-font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+main.container {
+  padding-block: 2rem;
+}

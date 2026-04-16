@@ -102,13 +102,24 @@
   },
 
   "workbench.colorCustomizations": {
+    "editor.selectionBackground": "#1d6fc29d",
     "editor.selectionHighlightBackground": "#7f71ff93",
     "editor.selectionHighlightBorder": "#7f71ff93",
+    "editor.wordHighlightStrongBackground": "#bb22da2a",
+    "editor.wordHighlightStrongBorder": "#bb22da8c",
     "editor.wordHighlightBackground": "#19b3be00",
     "editor.wordHighlightBorder": "#15e7d693",
     "activityBar.background": "#07351C",
     "titleBar.activeBackground": "#094A27",
-    "titleBar.activeForeground": "#F1FDF7"
+    "titleBar.activeForeground": "#F1FDF7",
+    "titleBar.inactiveBackground": "#07351C",
+    "titleBar.inactiveForeground": "#041E10",
+    "statusBar.background": "#094726",
+    "statusBar.foreground": "#F1FDF7",
+    "statusBar.debuggingBackground": "#094726",
+    "statusBar.debuggingForeground": "#F1FDF7",
+    "statusBar.noFolderBackground": "#094726",
+    "statusBar.noFolderForeground": "#F1FDF7"
   },
 
   "files.exclude": {

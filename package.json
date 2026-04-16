@@ -2,16 +2,21 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "npx tsc",
-    "start": "node --es-module-specifier-resolution=node --no-warning ./dist/index.js",
-    "compile": "npm run clean && npx tsc --watch",
+    "build": "npm run build:server && npm run build:client",
+    "build:server": "npx tsc",
+    "build:client": "cd client && npm run build",
+    "start": "node --es-module-specifier-resolution=node --no-warnings ./dist/index.js",
     "clean": "rimraf ./dist/ ./tsconfig.tsbuildinfo",
+    "compile": "npm run clean && npx tsc --watch",
+    "dev": "npm run build:server && concurrently -c cyan,green,magenta -k -n tsc,api,web \"npx tsc --watch --preserveWatchOutput\" \"node --no-warnings --watch ./dist/index.js\" \"npm run dev:client\"",
+    "dev:client": "cd client && npm run dev",
     "start-dev": "node --es-module-specifier-resolution=node --no-warnings --watch ./dist/index.js",
     "start-dev-browserSync": "node --no-warnings --watch bsync.mjs",
     "start-dev-ui": "concurrently -c cyan,green -n server,browserSync \"npm:start-dev\" \"npm:start-dev-browserSync\"",
     "start-once": "node --es-module-specifier-resolution=node --no-warnings ./dist/index.js",
     "lint": "eslint .",
-    "sync": "npx tsx scripts/sync.ts"
+    "sync": "npx tsx scripts/sync.ts",
+    "postinstall": "cd client && npm install --no-audit --no-fund"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
