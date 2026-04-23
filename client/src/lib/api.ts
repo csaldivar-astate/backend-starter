@@ -1,10 +1,16 @@
 type JsonBody = Record<string, unknown> | unknown[];
 
-async function request<T = unknown>(
+export interface ApiResponse<T = void> {
+  ok: boolean;
+  status: number;
+  data: T;
+}
+
+async function request<T = void>(
   method: string,
   path: string,
   body?: JsonBody
-): Promise<T> {
+): Promise<ApiResponse<T>> {
   const res = await fetch(`/api${path}`, {
     method,
     credentials: 'same-origin',
@@ -12,22 +18,18 @@ async function request<T = unknown>(
     body: body ? JSON.stringify(body) : undefined
   });
 
-  if (!res.ok) {
-    const message = await res.text().catch(() => res.statusText);
-    throw new Error(message || `Request failed with status ${res.status}`);
-  }
-
   const contentType = res.headers.get('content-type') ?? '';
-  if (contentType.includes('application/json')) {
-    return (await res.json()) as T;
-  }
-  return undefined as T;
+  const data = contentType.includes('application/json')
+    ? ((await res.json()) as T)
+    : (undefined as T);
+
+  return { ok: res.ok, status: res.status, data };
 }
 
 export const api = {
-  get: <T = unknown>(path: string) => request<T>('GET', path),
-  post: <T = unknown>(path: string, body?: JsonBody) => request<T>('POST', path, body),
-  put: <T = unknown>(path: string, body?: JsonBody) => request<T>('PUT', path, body),
-  patch: <T = unknown>(path: string, body?: JsonBody) => request<T>('PATCH', path, body),
-  del: <T = unknown>(path: string) => request<T>('DELETE', path)
+  get: <T = void>(path: string) => request<T>('GET', path),
+  post: <T = void>(path: string, body?: JsonBody) => request<T>('POST', path, body),
+  put: <T = void>(path: string, body?: JsonBody) => request<T>('PUT', path, body),
+  patch: <T = void>(path: string, body?: JsonBody) => request<T>('PATCH', path, body),
+  del: <T = void>(path: string) => request<T>('DELETE', path)
 };

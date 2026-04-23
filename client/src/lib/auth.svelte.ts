@@ -13,7 +13,8 @@ class AuthStore {
   async refresh(): Promise<void> {
     this.loading = true;
     try {
-      this.user = await api.get<User>('/me');
+      const res = await api.get<User>('/me');
+      this.user = res.ok ? res.data : null;
     } catch {
       this.user = null;
     } finally {
