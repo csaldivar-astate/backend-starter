@@ -14,7 +14,7 @@ class AuthStore {
     this.loading = true;
     try {
       const res = await api.get<User>('/me');
-      this.user = res.ok ? res.data : null;
+      this.user = res.data;
     } catch {
       this.user = null;
     } finally {

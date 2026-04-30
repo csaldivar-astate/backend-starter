@@ -23,14 +23,16 @@ createdb <your-database-name>
 Create a file called `.env` in the project root (same level as `package.json`) with the following variables:
 
 ```
-PORT=3000
-DB_HOST=localhost
-DB_PORT=5432
-DB_USERNAME=<your-postgres-username>
-DB_PASSWORD=<your-postgres-password>
-DB_NAME=<your-database-name>
-COOKIE_SECRET=<a-long-random-string>
-NODE_ENV=development
+PORT=
+COOKIE_SECRET=
+NODE_ENV=
+
+DB_USERNAME=
+DB_PASSWORD=
+DB_HOST=
+DB_PORT=
+DB_NAME=
+DB_SSL_MODE=
 ```
 
 Replace the `<placeholder>` values with your own:
@@ -43,6 +45,7 @@ Replace the `<placeholder>` values with your own:
 | `DB_USERNAME`   | Your PostgreSQL username                                        |
 | `DB_PASSWORD`   | Your PostgreSQL password (leave blank if none)                  |
 | `DB_NAME`       | Must match the database you created in step 2                   |
+| `DB_SSL_MODE`   | Set to `require` for hosted databases; leave blank for local    |
 | `COOKIE_SECRET` | Any long random string — used to sign session cookies           |
 | `NODE_ENV`      | `development` for local work & `production` for when we deploy  |
 
@@ -95,7 +98,7 @@ backend-starter/
 - **Calling your API from a page:**
   ```ts
   import { api } from '$lib/api';
-  const user = await api.get('/me');            // GET /api/me
+  const user = await api.get('/me'); // GET /api/me
   await api.post('/users', { email, password }); // POST /api/users
   ```
 - **Auth state** is available as a rune-based store:
@@ -109,6 +112,7 @@ backend-starter/
   toast.success('Saved!');
   ```
 - **File upload** with drag-and-drop + file picker:
+
   ```svelte
   <script lang="ts">
     import FileUpload from '$lib/components/FileUpload.svelte';
@@ -137,11 +141,15 @@ backend-starter/
   />
   <button onclick={submit} disabled={files.length === 0}>Upload</button>
   ```
+
   On the backend, handle the upload with [multer](https://www.npmjs.com/package/multer) (already installed):
+
   ```ts
   import multer from 'multer';
   const upload = multer({ dest: 'uploads/', limits: { fileSize: 5 * 1024 * 1024 } });
-  app.post('/api/photos', upload.array('files'), (req, res) => { /* ... */ });
+  app.post('/api/photos', upload.array('files'), (req, res) => {
+    /* ... */
+  });
   ```
 
 ## Building for Production
